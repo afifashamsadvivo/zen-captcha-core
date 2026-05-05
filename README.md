@@ -18,7 +18,7 @@
 
 ## 🚀 How to Use
 
-1.  **Download:** Head over to the [Releases](./releases "The releases tab") tab and pick your favorite flavor of digital poison (aka the HTML file). We’re currently rocking semantic versioning, but we’ll be switching to CalVer after 1.0.0 because, much like a robot trying to identify a crosswalk, we have no concept of linear time
+1.  **Download:** Head over to the [Releases](https://github.com/afifashamsadvivo/zen-captcha-core/releases "The releases tab") tab and pick your favorite flavor of digital poison (aka the HTML file). We’re currently rocking semantic versioning, but we’ll be switching to CalVer after 1.0.0 because, much like a robot trying to identify a crosswalk, we have no concept of linear time
 2.  **Get a Key**: Grab your `sitekey` from the Google reCAPTCHA Admin Console.
 3.  **Insert the Key**: Find the following line in the code and swap it for your actual key:
     ```html
