@@ -1,7 +1,7 @@
 ---
 name: 🚀 Feature Request
 about: Suggest a new idea for the neon grid.
-title: "[FEATURE] - "
+title: "[FEATURE] "
 labels: enhancement
 assignees: afifashamsadvivo
 ---
