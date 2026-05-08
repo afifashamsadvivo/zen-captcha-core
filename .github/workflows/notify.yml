@@ -1,0 +1,9 @@
+name: Notify Google
+on: [push]
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Bing (IndexNow)
+        run: |
+          curl "https://www.bing.com/ping?sitemap=https://github.com/afifashamsadvivo"
