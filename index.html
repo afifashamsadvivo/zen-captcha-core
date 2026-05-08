@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Verification</title>
+
+    <meta name="google-site-verification" content="neGra-Z7nZ5DBKhVI_YEVZATZgBD6tsU_i-1BTwRjW8" />
+  
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <style>
+        :root {
+            --neon-cyan: #00f2ff;
+            --dark-bg: #0a0a19;
+            --glass-bg: rgba(10, 10, 25, 0.9);
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #050505;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; 
+            margin: 0;
+            overflow-y: auto; 
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .container {
+            background: var(--glass-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background: transparent;
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+            transition: 0.3s all;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background: var(--neon-cyan);
+            color: black;
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .refresh-btn {
+            border-color: #ff00ff; 
+            color: #ff00ff;
+        }
+
+        .refresh-btn:hover {
+            background: #ff00ff;
+            box-shadow: 0 0 15px #ff00ff;
+        }
+
+        #customAlertOverlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+        }
+
+        #customAlert {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--dark-bg);
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 20px var(--neon-cyan), inset 0 0 10px var(--neon-cyan);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            width: 85%;
+            max-width: 400px;
+        }
+
+        #alertMessage {
+            /* Crucial for displaying the long token string on mobile */
+            word-break: break-all; 
+            font-size: 0.75rem;
+            max-height: 250px;
+            overflow-y: auto;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px dashed var(--neon-cyan);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>System Access</h1>
+        <form onsubmit="checkCaptcha(event)">
+            <div class="g-recaptcha" data-sitekey="6Ldbf98sAAAAANIv1DwOm2-iWF4PtEITPa1ZjHQV"></div>
+            
+            <div class="btn-group">
+                <button type="submit">Verify</button>
+                <button type="button" class="refresh-btn" onclick="location.reload()">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="customAlertOverlay">
+        <div id="customAlert">
+            <h2 id="alertTitle">NOTIFY</h2>
+            <p id="alertMessage"></p>
+            <button onclick="closeAlert()">Acknowledge</button>
+        </div>
+    </div>
+
+    <script>
+        function customAlert(title, message) {
+            // Using document.getElementById to push the data to the screen
+            document.getElementById('alertTitle').innerText = title;
+            document.getElementById('alertMessage').innerText = message;
+            document.getElementById('customAlertOverlay').style.display = 'block';
+        }
+
+        function closeAlert() {
+            document.getElementById('customAlertOverlay').style.display = 'none';
+        }
+
+        function checkCaptcha(event) {
+            event.preventDefault();
+            const response = grecaptcha.getResponse();
+            
+            if(response.length == 0) { 
+                customAlert("SECURITY BREACH", "Verification required. Please solve the puzzle first.");
+            } else {
+                // Formatting the string to be readable on your screen
+                const displayInfo = "You proofed you are a human, now you are a human\n\nTOKEN LENGTH: " + response.length + "\n\nRAW DATA:\n" + response;
+                customAlert("ACCESS GRANTED", displayInfo);
+            }
+        }
+    </script>
+</body>
+</html>
