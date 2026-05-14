@@ -1,6 +1,6 @@
 # zen-captcha-core
 
-### "Look at me. I am the human now."
+### "Look at me. I am the human now. 💅"
 
 `zen-captcha-core` is a lightweight, frontend-only verification gateway. It uses Google reCAPTCHA v2 to filter out the toasters and verify that your visitors are, in fact, carbon-based lifeforms with basic pattern recognition skills.
 
